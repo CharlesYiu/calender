@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calender</title>
+    <style>
+        body {
+            margin: unset;
+            overflow: hidden;
+        }
+        * { font-family: Verdana, Geneva, Tahoma, sans-serif; }
+        div.computer {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 100vw;
+            height: 100vh;
+            background-color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        div.computer > h1 { text-align: center; }
+    </style>
+    <script src="./calender/script.js" defer></script>
+</head>
+<body>
+    <main>
+        <date-picker></date-picker>
+        <script>
+            (() => {
+                const element = document.querySelector("main > date-picker")
+                element.addEventListener("dateselection", event => {
+                    console.log("select", event.detail)
+                })
+                element.addEventListener("dateselections", event => {
+                    console.log(`multiselect\n  >  ${event.detail.join("\n  >  ")}`)
+                })
+            })()
+        </script>
+    </main>
+    <div class="computer">
+        <h1>use a computer</h1>
+        <script> document.currentScript.parentElement.style.display = ("ontouchstart" in window) ? "flex" : "none"; </script>
+    </div>
+</body>
+</html>
